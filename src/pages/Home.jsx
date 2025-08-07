@@ -1,4 +1,4 @@
-import Navbar from "../layout/NavBar";
+import Navbar from "../layout/Navbar";
 import NextPrayer from "../features/nextPrayer/components/NextPrayer";
 
 const Home = () => {
