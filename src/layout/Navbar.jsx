@@ -27,7 +27,7 @@ const Navbar = () => {
               <li>
                 <img
                   className="mt-4"
-                  src="../assets/icons/Logo.svg"
+                  src="../assets/icons/logo.svg"
                   alt="logo.svg"
                   height={"80px"}
                   width={"80px"}
@@ -65,7 +65,7 @@ const Navbar = () => {
               <li onClick={() => setDisplayNavbarItems(!diplayNavbarItems)}>
                 <img
                   className="lg:hidden cursor-pointer"
-                  src="/src/assets/icons/List.svg"
+                  src="/src/assets/icons/list.svg"
                   alt="list"
                 />
               </li>
