@@ -27,7 +27,7 @@ const Navbar = () => {
               <li>
                 <img
                   className="mt-4"
-                  src="/src/assets/icons/Logo.svg"
+                  src="../assets/icons/Logo.svg"
                   alt="logo.svg"
                   height={"80px"}
                   width={"80px"}
