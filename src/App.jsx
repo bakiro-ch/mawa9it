@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import { LocationContext } from "../contexts/Context";
 import { useEffect, useState } from "react";
 import { useSetIpApi } from "./features/location/hooks/useSetIpApi";
