@@ -1,8 +1,8 @@
 import { Clear } from "../components/icons/Clear";
 import Lang from "../components/icons/Lang";
 import { useState } from "react";
-import logo from "../assets/icons/logo.svg";
-import list from "../assets/icons/list.svg";
+import Logo from "../assets/icons/Logo.svg";
+import List from "../assets/icons/List.svg";
 
 const Navbar = () => {
   const [diplayNavbarItems, setDisplayNavbarItems] = useState("false");
@@ -29,7 +29,7 @@ const Navbar = () => {
               <li>
                 <img
                   className="mt-4"
-                  src={logo}
+                  src={Logo}
                   alt="logo.svg"
                   height={"80px"}
                   width={"80px"}
@@ -67,7 +67,7 @@ const Navbar = () => {
               <li onClick={() => setDisplayNavbarItems(!diplayNavbarItems)}>
                 <img
                   className="lg:hidden cursor-pointer"
-                  src={list}
+                  src={List}
                   alt="list"
                 />
               </li>
