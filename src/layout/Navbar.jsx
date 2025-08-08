@@ -5,17 +5,15 @@ import Logo from "../assets/icons/Logo.svg";
 import List from "../assets/icons/List.svg";
 
 const Navbar = () => {
-  const [diplayNavbarItems, setDisplayNavbarItems] = useState("false");
+  const [diplayNavbarItems, setDisplayNavbarItems] = useState(false);
   const navbarItems = () => {
     return (
-      <div className="lg:hidden h-screen backdrop-blur-sm bg-primary/60 flex absolute z-999 w-full items-center">
+      <div className="lg:hidden h-screen backdrop-blur-sm bg-primary/90 flex absolute z-999 w-full items-center">
         <ul className=" text-background/90 flex flex-col justify-center items-center gap-11 font-bold h-1/2  w-full text-md">
-          <li className="cursor-pointer hover:text-secondary">Home</li>
-          <li className="cursor-pointer hover:text-secondary">Prayer Times</li>
-          <li className="cursor-pointer hover:text-secondary">
-            Qibla Direction
-          </li>
-          <li className="cursor-pointer hover:text-secondary">Calendar</li>
+          <li className="cursor-pointer text-secondary">Home</li>
+          <li className="cursor-pointer text-secondary">Prayer Times</li>
+          <li className="cursor-pointer text-secondary">Qibla Direction</li>
+          <li className="cursor-pointer text-secondary">Calendar</li>
         </ul>
       </div>
     );
