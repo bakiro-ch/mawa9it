@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="w-full h-15 bg-primary text-background sticky top-0">
-        <ul className="flex lg:justify-between justify-around lg:px-15 h-full items-center">
+        <ul className="flex lg:justify-between justify-between px-2 lg:px-15 h-full items-center">
           <li>
             <ul className="flex items-center">
               <li>
