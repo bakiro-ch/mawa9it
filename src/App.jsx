@@ -9,14 +9,14 @@ function App() {
   // setRegion(city);
 
   const [location, setLocation] = useState(() => {
-    return localStorage.getItem("location");
+    return localStorage.getItem("location") || "Al-Riyadh, Saudi Arabia";
   });
 
-  const [apiAlAdhan, setApiAlAdhan] = useState(false);
-
-  useEffect(() => localStorage.setItem("location", location), [location]);
+  const [apiAlAdhan, setApiAlAdhan] = useState(true);
 
   useSetIpApi({ location, setLocation, setApiAlAdhan });
+
+  useEffect(() => localStorage.setItem("location", location), [location]);
 
   return (
     <LocationContext.Provider

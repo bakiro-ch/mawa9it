@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { LocationContext } from "../../../../contexts/Context";
+// import { LocationContext } from "../../../../contexts/Context";
 
-export function useSetIpApi({ setLocation, setApiAlAdhan }) {
+export function useSetIpApi({ location, setLocation, setApiAlAdhan }) {
   //   const [region, setRegion] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
+      if (location != "Al-Riyadh, Saudi Arabia") return;
       try {
         const response = await fetch("https://ipwho.is/");
         const data = await response.json();
