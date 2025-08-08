@@ -1,9 +1,9 @@
 const Dialog = ({ setDialog, children }) => {
   return (
-    <div className="absolute flex justify-center items-center w-full h-full">
+    <div className="absolute flex justify-center items-center w-full h-screen">
       <div
         onClick={() => setDialog(false)}
-        className="w-full h-full bg-black/60"
+        className="w-full h-screen bg-black/60"
       >
         {" "}
       </div>
