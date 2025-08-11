@@ -16,6 +16,7 @@ export function useSetIpApi({ location, setLocation, setApiAlAdhan }) {
         // console.log(r);
         setApiAlAdhan(true);
         // console.log(region);
+        console.log("ipwho.is");
       } catch (err) {
         console.log("Error: ", err);
       }

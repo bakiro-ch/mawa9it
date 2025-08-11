@@ -14,7 +14,7 @@ export const useNextPrayerTimeByAddress = () => {
   // console.log(location);
   useEffect(() => {
     async function fetchData() {
-      if (apiAlAdhan) {
+      if (apiAlAdhan || location == "Al-Riyadh, Saudi Arabia") {
         try {
           // const lc = location ? location.split(" ") : "algeria";
           const response = await fetch(
@@ -29,6 +29,8 @@ export const useNextPrayerTimeByAddress = () => {
 
           setNextPrayerName(nextPrayer);
           setNextPrayerTime(prayerTime);
+
+          console.log("api.aladhan.com");
 
           // console.log(
           //   nextPrayer,

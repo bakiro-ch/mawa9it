@@ -12,7 +12,7 @@ function App() {
     return localStorage.getItem("location") || "Al-Riyadh, Saudi Arabia";
   });
 
-  const [apiAlAdhan, setApiAlAdhan] = useState(true);
+  const [apiAlAdhan, setApiAlAdhan] = useState(false);
 
   useSetIpApi({ location, setLocation, setApiAlAdhan });
 
