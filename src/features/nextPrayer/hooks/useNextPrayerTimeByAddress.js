@@ -30,6 +30,7 @@ export const useNextPrayerTimeByAddress = () => {
 
           setNextPrayerName(nextPrayer);
           setNextPrayerTime(prayerTime);
+          // setRemainingTime("00:00:00");
 
           console.log("api.aladhan.com");
 
@@ -57,7 +58,12 @@ export const useNextPrayerTimeByAddress = () => {
     const interval = setInterval(() => {
       const formatted = getRemainingTime(`${nextPrayerTime}`).formatted;
       setRemainingTime(formatted);
-      if (formatted == "00:00:00") setApiAlAdhan(true);
+      if (formatted === "00:00:00") {
+        // إصلاح syntax خطأ setTimeout
+        setTimeout(() => {
+          setApiAlAdhan(true);
+        }, 1000);
+      }
       // console.log(remainingTime, formatted);
     }, 1000);
     return () => clearInterval(interval);
