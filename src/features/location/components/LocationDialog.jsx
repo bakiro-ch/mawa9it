@@ -1,5 +1,5 @@
 import Dialog from "../../../components/Dialog";
-import { LocationContext } from "../../../../contexts/Context";
+import { LocationContext } from "../../../contexts/Context";
 
 import { useMemo, useState, useContext } from "react";
 import { useSearchCities } from "../hooks/useSearchCities";

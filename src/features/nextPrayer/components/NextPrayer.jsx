@@ -1,7 +1,7 @@
 import Location from "../../../components/icons/Location";
 import Mosque from "../../../components/icons/Mosque";
 import LocationDialog from "../../location/components/LocationDialog";
-import { LocationContext } from "../../../../contexts/Context";
+import { LocationContext } from "../../../contexts/Context";
 import { useNextPrayerTimeByAddress } from "../hooks/useNextPrayerTimeByAddress";
 
 import { useState, useContext } from "react";

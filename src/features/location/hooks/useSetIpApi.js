@@ -3,10 +3,17 @@ import { useEffect } from "react";
 
 export function useSetIpApi({ location, setLocation, setApiAlAdhan }) {
   //   const [region, setRegion] = useState();
+  console.log("chofi");
 
   useEffect(() => {
+    console.log("chofi2");
+
     const fetchData = async () => {
-      if (location != "Al-Riyadh, Saudi Arabia") return;
+      console.log("chofi3");
+      if (location != "Al-Riyadh, Saudi Arabia") {
+        setApiAlAdhan(true);
+        return;
+      }
       try {
         const response = await fetch("https://ipwho.is/");
         const data = await response.json();

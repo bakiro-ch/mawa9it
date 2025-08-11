@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { LocationContext } from "../../../../contexts/Context";
+import { LocationContext } from "../../../contexts/Context";
 import { getRemainingTime } from "./getRemainingTime";
 
 export const useNextPrayerTimeByAddress = () => {
@@ -11,10 +11,11 @@ export const useNextPrayerTimeByAddress = () => {
 
   const { location, apiAlAdhan, setApiAlAdhan } = useContext(LocationContext);
   // console.log(locationHelp.current);
-  // console.log(location);
+  console.log("ana 5atini");
+
   useEffect(() => {
     async function fetchData() {
-      if (apiAlAdhan || location == "Al-Riyadh, Saudi Arabia") {
+      if (apiAlAdhan) {
         try {
           // const lc = location ? location.split(" ") : "algeria";
           const response = await fetch(
@@ -42,7 +43,7 @@ export const useNextPrayerTimeByAddress = () => {
         } catch (err) {
           console.log("Error: ", err);
         }
-        setApiAlAdhan(!apiAlAdhan);
+        setApiAlAdhan(false);
       }
       // console.log(nextPrayerTime, nextPrayerName, remainingTime);
     }

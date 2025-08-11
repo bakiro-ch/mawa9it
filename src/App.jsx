@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { LocationContext } from "../contexts/Context";
+import { LocationContext } from "./contexts/Context";
 import { useEffect, useState } from "react";
 import { useSetIpApi } from "./features/location/hooks/useSetIpApi";
 
@@ -13,8 +13,8 @@ function App() {
   });
 
   const [apiAlAdhan, setApiAlAdhan] = useState(false);
-
-  useSetIpApi({ location, setLocation, setApiAlAdhan });
+  console.log("App");
+  useSetIpApi({ location, setLocation, setApiAlAdhan, apiAlAdhan });
 
   useEffect(() => localStorage.setItem("location", location), [location]);
 
