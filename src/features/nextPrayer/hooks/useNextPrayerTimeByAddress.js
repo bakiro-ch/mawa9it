@@ -42,7 +42,7 @@ export const useNextPrayerTimeByAddress = () => {
         } catch (err) {
           console.log("Error: ", err);
         }
-        setApiAlAdhan(false);
+        setApiAlAdhan(!apiAlAdhan);
       }
       // console.log(nextPrayerTime, nextPrayerName, remainingTime);
     }
