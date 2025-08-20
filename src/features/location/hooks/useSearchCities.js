@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export function useSearchCities(inputValue) {
   const [result, setResult] = useState([]);
   // const apiUrl = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = "pk.60d535583e9f53faa9ae70530dd5bf3b";
 
   useEffect(() => {
     async function fetchData() {
