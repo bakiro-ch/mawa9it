@@ -50,7 +50,7 @@ export const useNextPrayerTimeByAddress = () => {
       // console.log(nextPrayerTime, nextPrayerName, remainingTime);
     }
     fetchData();
-  }, [apiAlAdhan]);
+  }, [apiAlAdhan, nextPrayerTime]);
 
   //
   useEffect(() => {
@@ -60,12 +60,9 @@ export const useNextPrayerTimeByAddress = () => {
       const formatted = getRemainingTime(`${nextPrayerTime}`).formatted;
       setRemainingTime(formatted);
       if (formatted === "00:00:00") {
-        // إصلاح syntax خطأ setTimeout
-        setTimeout(() => {
-          setApiAlAdhan(true);
-          setRemainingTime("00:00:00");
-        }, 1000);
+        setApiAlAdhan(true);
       }
+
       // console.log(remainingTime, formatted);
     }, 1000);
     return () => clearInterval(interval);
