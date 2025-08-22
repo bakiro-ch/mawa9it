@@ -1,11 +1,19 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { LocationContext } from "../../../contexts/Context";
 import { getRemainingTime } from "./getRemainingTime";
 
-export const useNextPrayerTimeByAddress = () => {
-  const [nextPrayerName, setNextPrayerName] = useState(null);
-  const [nextPrayerTime, setNextPrayerTime] = useState(null);
-  const [remainingTime, setRemainingTime] = useState("00:00:00");
+export const useNextPrayerTimeByAddress = (
+  nextPrayerName,
+  nextPrayerTime,
+  remainingTime,
+  setNextPrayerName,
+  setNextPrayerTime,
+  setRemainingTime
+) => {
+  // const [nextPrayerName, setNextPrayerName] = useState(null);
+  // const [nextPrayerTime, setNextPrayerTime] = useState(null);
+  // const [remainingTime, setRemainingTime] = useState("00:00:00");
+
   // const [apiAlAdhan, setApiAlAdhan] = useState(false);
   // const [formatted, setFormatted] = useState(null);
 
@@ -54,19 +62,26 @@ export const useNextPrayerTimeByAddress = () => {
 
   //
   useEffect(() => {
-    if (!nextPrayerTime) return;
+    // console.log(remainingTime);
+    if (!nextPrayerTime || remainingTime === "وقت الصلاة") return;
 
     const interval = setInterval(() => {
       const formatted = getRemainingTime(`${nextPrayerTime}`).formatted;
-      setRemainingTime(formatted);
+      console.log(remainingTime, "-");
+      console.log(formatted);
       if (formatted === "00:00:00") {
-        setApiAlAdhan(true);
+        setRemainingTime("وقت الصلاة");
+        setTimeout(() => {
+          setApiAlAdhan(true);
+          setRemainingTime("00:00:00");
+        }, 300000);
+      } else {
+        setRemainingTime(formatted);
       }
-
       // console.log(remainingTime, formatted);
     }, 1000);
     return () => clearInterval(interval);
-  }, [nextPrayerTime]);
+  }, [nextPrayerTime, remainingTime]);
 
   return { nextPrayerName, nextPrayerTime, remainingTime };
 };

@@ -10,9 +10,18 @@ const NextPrayer = () => {
   const [dialog, setDialog] = useState(false);
 
   const { location, setLocation } = useContext(LocationContext);
-  const { nextPrayerName, nextPrayerTime, remainingTime } =
-    useNextPrayerTimeByAddress();
-
+  const [nextPrayerName, setNextPrayerName] = useState(null);
+  const [nextPrayerTime, setNextPrayerTime] = useState(null);
+  const [remainingTime, setRemainingTime] = useState("00:00:00");
+  useNextPrayerTimeByAddress(
+    nextPrayerName,
+    nextPrayerTime,
+    remainingTime,
+    setNextPrayerName,
+    setNextPrayerTime,
+    setRemainingTime
+  );
+  console.log(remainingTime, "nextPrayer");
   // useEffect(() => localStorage.setItem("location", location), [location]);
 
   return (
