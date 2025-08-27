@@ -1,19 +1,56 @@
 import { Clear } from "../components/icons/Clear";
 import Lang from "../components/icons/Lang";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "../assets/icons/Logo.svg";
 import List from "../assets/icons/List.svg";
+import { Link } from "react-router-dom";
+import { LocationContext } from "../contexts/Context";
 
 const Navbar = () => {
   const [diplayNavbarItems, setDisplayNavbarItems] = useState(false);
+  const { setApiAlAdhan } = useContext(LocationContext);
   const navbarItems = () => {
     return (
       <div className="lg:hidden h-screen backdrop-blur-sm bg-primary/90 flex absolute z-999 w-full items-center">
         <ul className=" text-background/90 flex flex-col justify-center items-center gap-11 font-bold h-1/2  w-full text-md">
-          <li className="cursor-pointer text-secondary">Home</li>
-          <li className="cursor-pointer text-secondary">Prayer Times</li>
-          <li className="cursor-pointer text-secondary">Qibla Direction</li>
-          <li className="cursor-pointer text-secondary">Calendar</li>
+          <Link to="/">
+            <li
+              onClick={() => {
+                // setApiAlAdhan(true);
+                setDisplayNavbarItems(false);
+              }}
+              className="cursor-pointer text-secondary"
+            >
+              Home
+            </li>
+          </Link>
+
+          <Link to="/prayerTimes">
+            <li
+              onClick={() => {
+                setDisplayNavbarItems(false);
+              }}
+              className="cursor-pointer text-secondary"
+            >
+              Prayer Times
+            </li>
+          </Link>
+          <li
+            onClick={() => {
+              setDisplayNavbarItems(false);
+            }}
+            className="cursor-pointer text-secondary"
+          >
+            Qibla Direction
+          </li>
+          <li
+            onClick={() => {
+              setDisplayNavbarItems(false);
+            }}
+            className="cursor-pointer text-secondary"
+          >
+            Calendar
+          </li>
         </ul>
       </div>
     );
@@ -40,12 +77,20 @@ const Navbar = () => {
           </li>
           <li>
             <ul className="hidden lg:flex gap-16 text-md font-medium">
-              <li className="cursor-pointer text-background hover:text-secondary">
-                Home
-              </li>
-              <li className="cursor-pointer text-background hover:text-secondary">
-                Prayer Times
-              </li>
+              <Link to="/">
+                <li
+                  onClick={() => setApiAlAdhan(true)}
+                  className="cursor-pointer text-background hover:text-secondary"
+                >
+                  Home
+                </li>
+              </Link>
+              <Link to="prayerTimes">
+                <li className="cursor-pointer text-background hover:text-secondary">
+                  Prayer Times
+                </li>
+              </Link>
+
               <li className="cursor-pointer text-background hover:text-secondary">
                 Qibla Direction
               </li>

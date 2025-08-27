@@ -9,10 +9,15 @@ import { useState, useContext } from "react";
 const NextPrayer = () => {
   const [dialog, setDialog] = useState(false);
 
-  const { location, setLocation } = useContext(LocationContext);
-  const [nextPrayerName, setNextPrayerName] = useState(null);
-  const [nextPrayerTime, setNextPrayerTime] = useState(null);
+  const { location } = useContext(LocationContext);
+  const [nextPrayerName, setNextPrayerName] = useState(
+    localStorage.getItem("nextPrayerName") || null
+  );
+  const [nextPrayerTime, setNextPrayerTime] = useState(
+    localStorage.getItem("nextPrayerTime") || null
+  );
   const [remainingTime, setRemainingTime] = useState("00:00:00");
+
   useNextPrayerTimeByAddress(
     nextPrayerName,
     nextPrayerTime,
@@ -46,8 +51,8 @@ const NextPrayer = () => {
       {dialog ? (
         <LocationDialog
           setDialog={setDialog}
-          //   location={location}
-          setLocation={setLocation}
+          // //   location={location}
+          // setLocation={setLocation}
         />
       ) : (
         <></>

@@ -40,7 +40,6 @@ export const useNextPrayerTimeByAddress = (
           setNextPrayerTime(prayerTime);
           // setRemainingTime("00:00:00");
           console.log(remainingTime, nextPrayerName, nextPrayerTime);
-
           console.log("api.aladhan.com");
 
           // console.log(
@@ -66,7 +65,9 @@ export const useNextPrayerTimeByAddress = (
     if (!nextPrayerTime || remainingTime === "وقت الصلاة") return;
 
     const interval = setInterval(() => {
-      const formatted = getRemainingTime(`${nextPrayerTime}`).formatted;
+      let formatted = getRemainingTime(`${nextPrayerTime}`).formatted;
+      const hour = getRemainingTime(`${nextPrayerTime}`).hours;
+      if (hour >= 23) formatted = "00:00:00";
       console.log(remainingTime, "-");
       console.log(formatted);
       if (formatted === "00:00:00") {
@@ -83,6 +84,11 @@ export const useNextPrayerTimeByAddress = (
     return () => clearInterval(interval);
   }, [nextPrayerTime, remainingTime]);
 
+  //
+  useEffect(() => {
+    localStorage.setItem("nextPrayerName", nextPrayerName);
+    localStorage.setItem("nextPrayerTime", nextPrayerTime);
+  }, [nextPrayerName, nextPrayerTime]);
   return { nextPrayerName, nextPrayerTime, remainingTime };
 };
 // import { useEffect, useState, useContext } from "react";

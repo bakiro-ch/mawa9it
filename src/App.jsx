@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import { LocationContext } from "./contexts/Context";
 import { useEffect, useState } from "react";
 import { useSetIpApi } from "./features/location/hooks/useSetIpApi";
+import { Routes, Route, Link } from "react-router-dom";
+import PrayerTimes from "./pages/PrayerTimes";
+import Navbar from "./layout/Navbar";
 
 function App() {
   // const [region, setRegion] = useState("Al-Riyadh, Saudi Arabia");
@@ -11,19 +14,34 @@ function App() {
   const [location, setLocation] = useState(() => {
     return localStorage.getItem("location") || "Al-Riyadh, Saudi Arabia";
   });
-
   const [apiAlAdhan, setApiAlAdhan] = useState(false);
   console.log("App");
   useSetIpApi({ location, setLocation, setApiAlAdhan, apiAlAdhan });
+  const [prayerTimes, setPrayerTimes] = useState("");
+  // const [remainingTime, setRemainingTime] = useState("00:00:00");
 
   useEffect(() => localStorage.setItem("location", location), [location]);
 
   return (
-    <LocationContext.Provider
-      value={{ location, setLocation, apiAlAdhan, setApiAlAdhan }}
-    >
-      <Home />
-    </LocationContext.Provider>
+    <>
+      {" "}
+      <LocationContext.Provider
+        value={{
+          location,
+          setLocation,
+          apiAlAdhan,
+          setApiAlAdhan,
+          prayerTimes,
+          setPrayerTimes,
+        }}
+      >
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/prayerTimes" element={<PrayerTimes />} />
+        </Routes>
+      </LocationContext.Provider>
+    </>
   );
 }
 

@@ -4,11 +4,11 @@ import { LocationContext } from "../../../contexts/Context";
 import { useMemo, useState, useContext } from "react";
 import { useSearchCities } from "../hooks/useSearchCities";
 
-const LocationDialog = ({ setDialog, setLocation }) => {
+const LocationDialog = ({ setDialog }) => {
   const [inputValue, setInputValue] = useState("");
   const [optionsDisplay, setOptionsDisplay] = useState(true);
 
-  const { setApiAlAdhan } = useContext(LocationContext);
+  const { setApiAlAdhan, setLocation } = useContext(LocationContext);
 
   const results = useSearchCities(inputValue);
 
