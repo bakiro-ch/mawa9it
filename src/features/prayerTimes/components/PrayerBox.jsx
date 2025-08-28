@@ -5,13 +5,19 @@ const PrayerBox = ({ PrayerName, PrayerTime, children }) => {
   return (
     <div>
       <div
-        className={`h-50 w-50 flex flex-col justify-evenly shadow-2xl text-center rounded-2xl ${
+        className={`h-50 w-70 flex flex-col justify-evenly shadow-2xl text-center rounded-2xl ${
           PrayerName === nextPrayerName
             ? "bg-primary  text-white"
             : "bg-transparent"
         }`}
       >
-        <div className=" flex text-center justify-center">{children}</div>
+        <div
+          className={`flex text-center justify-center ${
+            PrayerName !== nextPrayerName ? "text-secondary" : "text-white"
+          }`}
+        >
+          {children}
+        </div>
         <div
           className={`font-bold text-3xl ${
             PrayerName === nextPrayerName ? "text-secondary" : "text-primary"

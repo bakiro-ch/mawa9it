@@ -1,6 +1,6 @@
 import { Clear } from "../components/icons/Clear";
 import Lang from "../components/icons/Lang";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Logo from "../assets/icons/Logo.svg";
 import List from "../assets/icons/List.svg";
 import { Link } from "react-router-dom";
@@ -8,7 +8,8 @@ import { LocationContext } from "../contexts/Context";
 
 const Navbar = () => {
   const [diplayNavbarItems, setDisplayNavbarItems] = useState(false);
-  const { setApiAlAdhan } = useContext(LocationContext);
+  // const { setApiAlAdhan } = useContext(LocationContext);
+  const [active, setActive] = useState("home");
   const navbarItems = () => {
     return (
       <div className="lg:hidden h-screen backdrop-blur-sm bg-primary/90 flex absolute z-999 w-full items-center">
@@ -18,8 +19,11 @@ const Navbar = () => {
               onClick={() => {
                 // setApiAlAdhan(true);
                 setDisplayNavbarItems(false);
+                setActive("home");
               }}
-              className="cursor-pointer text-secondary"
+              className={`cursor-pointer ${
+                active === "home" ? "text-secondary" : "text-background"
+              } hover:text-secondary`}
             >
               Home
             </li>
@@ -28,26 +32,35 @@ const Navbar = () => {
           <Link to="/prayerTimes">
             <li
               onClick={() => {
+                setActive("prayerTime");
                 setDisplayNavbarItems(false);
               }}
-              className="cursor-pointer text-secondary"
+              className={`cursor-pointer ${
+                active === "prayerTime" ? "text-secondary" : "text-background"
+              } hover:text-secondary`}
             >
               Prayer Times
             </li>
           </Link>
           <li
             onClick={() => {
+              setActive("qibla");
               setDisplayNavbarItems(false);
             }}
-            className="cursor-pointer text-secondary"
+            className={`cursor-pointer ${
+              active === "qibla" ? "text-secondary" : "text-background"
+            } hover:text-secondary`}
           >
             Qibla Direction
           </li>
           <li
             onClick={() => {
+              setActive("calendar");
               setDisplayNavbarItems(false);
             }}
-            className="cursor-pointer text-secondary"
+            className={`cursor-pointer ${
+              active === "calendar" ? "text-secondary" : "text-background"
+            } hover:text-secondary`}
           >
             Calendar
           </li>
@@ -79,22 +92,44 @@ const Navbar = () => {
             <ul className="hidden lg:flex gap-16 text-md font-medium">
               <Link to="/">
                 <li
-                  onClick={() => setApiAlAdhan(true)}
-                  className="cursor-pointer text-background hover:text-secondary"
+                  onClick={() => {
+                    // setApiAlAdhan(true);
+                    setActive("home");
+                  }}
+                  className={`cursor-pointer ${
+                    active === "home" ? "text-secondary" : "text-background"
+                  } hover:text-secondary`}
                 >
                   Home
                 </li>
               </Link>
               <Link to="prayerTimes">
-                <li className="cursor-pointer text-background hover:text-secondary">
+                <li
+                  onClick={() => setActive("prayerTime")}
+                  className={`cursor-pointer ${
+                    active === "prayerTime"
+                      ? "text-secondary"
+                      : "text-background"
+                  } hover:text-secondary`}
+                >
                   Prayer Times
                 </li>
               </Link>
 
-              <li className="cursor-pointer text-background hover:text-secondary">
+              <li
+                onClick={() => setActive("qibla")}
+                className={`cursor-pointer ${
+                  active === "qibla" ? "text-secondary" : "text-background"
+                } hover:text-secondary`}
+              >
                 Qibla Direction
               </li>
-              <li className="cursor-pointer text-background hover:text-secondary">
+              <li
+                onClick={() => setActive("calendar")}
+                className={`cursor-pointer ${
+                  active === "calendar" ? "text-secondary" : "text-background"
+                } hover:text-secondary`}
+              >
                 Calendar
               </li>
             </ul>

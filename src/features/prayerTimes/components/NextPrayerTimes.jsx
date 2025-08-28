@@ -1,12 +1,11 @@
-import React from "react";
 import PrayerBox from "./PrayerBox";
-import Calendar from "../../../components/icons/Calendar";
 import Location from "../../../components/icons/Location";
 import LocationDialog from "../../location/components/LocationDialog";
 import { useContext, useState } from "react";
 import { LocationContext } from "../../../contexts/Context";
 import usePrayerTimes from "../hooks/usePrayerTimes";
 import Mosque from "../../../components/icons/Mosque";
+import { MyDatePicker } from "../../../components/DatePicker";
 import {
   Sunrise,
   Fajr,
@@ -17,23 +16,9 @@ import {
 } from "../../../components/icons/Sun";
 
 const NextPrayerTimes = () => {
-  const now = new Date();
-
-  const miladi = new Intl.DateTimeFormat("en-GB", {
-    weekday: "long", // Tuesday
-    day: "numeric", // 26
-    month: "long", // August
-    year: "numeric", // 2025
-  }).format(now);
-
-  const hijri = new Intl.DateTimeFormat("en-US-u-ca-islamic-umalqura", {
-    day: "numeric", // اليوم من الشهر (مثلاً: 26)
-    month: "long", // اسم الشهر (مثلاً: August)
-    year: "numeric", // السنة الهجرية (مثلاً: 1446)
-  }).format(now);
-
+  const [selected, setSelected] = useState(new Date());
   const { location } = useContext(LocationContext);
-  const { prayerTimes } = usePrayerTimes();
+  const { prayerTimes } = usePrayerTimes(selected);
   const [dialog, setDialog] = useState(false);
 
   const prayerBox = () => {
@@ -74,29 +59,32 @@ const NextPrayerTimes = () => {
   };
 
   return (
-    <div className="flex flex-col items-center relative gap-10 lg:gap-10">
-      <div className="flex gap-x-1 font-Lexend font-bold text-2xl lg:text-4xl text-primary mt-8">
+    <div className="flex delay-500 transition-all duration-500 flex-col items-center relative gap-10 lg:gap-10">
+      <div className="flex gap-x-1 font-Lexend font-bold text-2xl lg:text-4xl text-primary mt-12 lg:mt-8">
         <div className="lg:w-10 w-7 lg:h-10 h-7 text-secondary">
           <Mosque />
         </div>
         Today's Prayer Times
       </div>
-      <div className="flex lg:flex-row gap-y-8 flex-col lg:justify-center lg:items-center lg:gap-x-100">
-        <div className="flex justify-center items-center gap-1 font-light font-Lexend">
-          <div className=" w-5 h-5 text-secondary">
-            <Calendar />
-          </div>
-          <div>
-            <p>{miladi}</p>
-            <p>{hijri}</p>
-          </div>
+      <div className="flex lg:flex-row gap-y-8 lg:w-9/12 flex-col lg:justify-between lg:items-center ">
+        <div>
+          <MyDatePicker selected={selected} setSelected={setSelected} />
         </div>
-        <div onClick={() => setDialog(true)} className="flex cursor-pointer">
+
+        {/* {displayDatePicker ? (
+          <DatePicker selected={selected} setSelected={setSelected} />
+        ) : (
+          <></>
+        )} */}
+        <div
+          onClick={() => setDialog(true)}
+          className="flex items-center cursor-pointer"
+        >
           <div className="text-secondary">
             <Location />
           </div>
           <div className="font-Lexend font-extralight">
-            <p>{location}</p>
+            <p className="max-w-60 lg:max-w-110 break-all ">{location}</p>
           </div>
         </div>
       </div>{" "}
