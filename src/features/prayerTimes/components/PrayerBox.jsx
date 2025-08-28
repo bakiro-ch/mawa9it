@@ -5,7 +5,7 @@ const PrayerBox = ({ PrayerName, PrayerTime, children }) => {
   return (
     <div>
       <div
-        className={`h-50 w-70 flex flex-col justify-evenly shadow-2xl text-center rounded-2xl ${
+        className={`h-50 lg:w-70 w-80 flex flex-col justify-evenly shadow-2xl text-center rounded-2xl ${
           PrayerName === nextPrayerName
             ? "bg-primary  text-white"
             : "bg-transparent"

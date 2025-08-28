@@ -18,8 +18,12 @@ import {
 const NextPrayerTimes = () => {
   const [selected, setSelected] = useState(new Date());
   const { location } = useContext(LocationContext);
-  const { prayerTimes } = usePrayerTimes(selected);
   const [dialog, setDialog] = useState(false);
+
+  const [prayerTimes, setPrayerTimes] = useState(
+    JSON.parse(localStorage.getItem("prayerTimes")) || ""
+  );
+  usePrayerTimes(selected, prayerTimes, setPrayerTimes);
 
   const prayerBox = () => {
     const array = [
@@ -42,7 +46,6 @@ const NextPrayerTimes = () => {
         Isha: <Isha />,
       },
     ];
-
     return array.map((el) => {
       // console.log(el, prayerTimes[el]);
       const salat = Object.keys(el)[0];
@@ -66,16 +69,7 @@ const NextPrayerTimes = () => {
         </div>
         Today's Prayer Times
       </div>
-      <div className="flex lg:flex-row gap-y-8 lg:w-9/12 flex-col lg:justify-between lg:items-center ">
-        <div>
-          <MyDatePicker selected={selected} setSelected={setSelected} />
-        </div>
-
-        {/* {displayDatePicker ? (
-          <DatePicker selected={selected} setSelected={setSelected} />
-        ) : (
-          <></>
-        )} */}
+      <div className="flex lg:flex-row-reverse gap-y-8 lg:w-9/12 flex-col lg:justify-between lg:items-center ">
         <div
           onClick={() => setDialog(true)}
           className="flex items-center cursor-pointer"
@@ -86,6 +80,9 @@ const NextPrayerTimes = () => {
           <div className="font-Lexend font-extralight">
             <p className="max-w-60 lg:max-w-110 break-all ">{location}</p>
           </div>
+        </div>
+        <div>
+          <MyDatePicker selected={selected} setSelected={setSelected} />
         </div>
       </div>{" "}
       <div className="grid lg:grid-cols-3 lg:gap-x-20 gap-y-10 mb-5">

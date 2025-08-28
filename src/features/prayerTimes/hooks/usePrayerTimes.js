@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { LocationContext } from "../../../contexts/Context";
 
-const usePrayerTimes = (selected) => {
-  const { location, prayerTimes, setPrayerTimes } = useContext(LocationContext);
+const usePrayerTimes = (selected, prayerTimes, setPrayerTimes) => {
+  const { location } = useContext(LocationContext);
   console.log("out");
   useEffect(() => {
-    console.log("on");
     async function fetchData() {
+      if (prayerTimes !== "") return;
+      console.log("on");
       console.log(selected.toLocaleDateString().replaceAll("/", "-"));
       let parts = selected.toLocaleDateString().replaceAll("/", "-").split("-");
       parts.pop();
@@ -21,10 +22,29 @@ const usePrayerTimes = (selected) => {
       const data = await response.json();
       setPrayerTimes(data.data.timings);
       console.log(data.data.timings);
+      // const prayerT = [
+      //   { Fajr: data.data.timings.Fajr },
+      //   { Dhuhr: data.data.timings.Dhuhr },
+      //   { Asr: data.data.timings.Asr },
+      //   { Maghrib: data.data.timings.Maghrib },
+      //   { Isha: data.data.timings.Isha },
+      // ];
+      const prayerT = {
+        Fajr: data.data.timings.Fajr,
+        Sunrise: data.data.timings.Sunrise,
+        Dhuhr: data.data.timings.Dhuhr,
+        Asr: data.data.timings.Asr,
+        Maghrib: data.data.timings.Maghrib,
+        Isha: data.data.timings.Isha,
+      };
+      // console.log(prayerT);
+      localStorage.setItem("prayerTimes", JSON.stringify(prayerT));
+      // const prt = localStorage.getItem("prayerTimes");
+      // console.log(JSON.parse(prt), "++++++");
     }
     fetchData();
   }, [location, selected]);
-  return { prayerTimes };
+  return;
 };
 
 export default usePrayerTimes;

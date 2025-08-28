@@ -17,7 +17,9 @@ function App() {
   const [apiAlAdhan, setApiAlAdhan] = useState(false);
   console.log("App");
   useSetIpApi({ location, setLocation, setApiAlAdhan, apiAlAdhan });
-  const [prayerTimes, setPrayerTimes] = useState("");
+  // const [prayerTimes, setPrayerTimes] = useState(
+  //   localStorage.getItem("prayerTimes") || ""
+  // );
   // const [remainingTime, setRemainingTime] = useState("00:00:00");
 
   useEffect(() => localStorage.setItem("location", location), [location]);
@@ -31,8 +33,6 @@ function App() {
           setLocation,
           apiAlAdhan,
           setApiAlAdhan,
-          prayerTimes,
-          setPrayerTimes,
         }}
       >
         <Navbar />

@@ -9,7 +9,7 @@ import { LocationContext } from "../contexts/Context";
 const Navbar = () => {
   const [diplayNavbarItems, setDisplayNavbarItems] = useState(false);
   // const { setApiAlAdhan } = useContext(LocationContext);
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState("");
   const navbarItems = () => {
     return (
       <div className="lg:hidden h-screen backdrop-blur-sm bg-primary/90 flex absolute z-999 w-full items-center">
