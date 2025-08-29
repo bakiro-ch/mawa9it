@@ -23,7 +23,14 @@ const NextPrayerTimes = () => {
   const [prayerTimes, setPrayerTimes] = useState(
     JSON.parse(localStorage.getItem("prayerTimes")) || ""
   );
-  usePrayerTimes(selected, prayerTimes, setPrayerTimes);
+  const [dateChanged, setDateChanged] = useState(false);
+  usePrayerTimes(
+    selected,
+    prayerTimes,
+    setPrayerTimes,
+    dateChanged,
+    setDateChanged
+  );
 
   const prayerBox = () => {
     const array = [
@@ -82,7 +89,11 @@ const NextPrayerTimes = () => {
           </div>
         </div>
         <div>
-          <MyDatePicker selected={selected} setSelected={setSelected} />
+          <MyDatePicker
+            selected={selected}
+            setSelected={setSelected}
+            setDateChanged={setDateChanged}
+          />
         </div>
       </div>{" "}
       <div className="grid lg:grid-cols-3 lg:gap-x-20 gap-y-10 mb-5">

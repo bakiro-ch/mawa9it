@@ -3,7 +3,7 @@ import { DayPicker, getDefaultClassNames } from "react-day-picker";
 import Calendar from "./icons/Calendar";
 import "react-day-picker/style.css";
 
-export function MyDatePicker({ selected, setSelected }) {
+export function MyDatePicker({ selected, setSelected, setDateChanged }) {
   // التاريخ الحالي
   //   const [selected, setSelected] = useState(new Date());
   // للتحكم في إظهار/إخفاء الـ picker
@@ -45,6 +45,7 @@ export function MyDatePicker({ selected, setSelected }) {
               if (date) {
                 setSelected(date);
                 setShowPicker(false); // إخفاء الـ picker بعد الاختيار
+                setDateChanged(true);
               }
             }}
           />

@@ -2,13 +2,28 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { LocationContext } from "../../../contexts/Context";
 
-const usePrayerTimes = (selected, prayerTimes, setPrayerTimes) => {
+const usePrayerTimes = (
+  selected,
+  prayerTimes,
+  setPrayerTimes,
+  dateChanged,
+  setDateChanged
+) => {
   const { location } = useContext(LocationContext);
   console.log("out");
   useEffect(() => {
     async function fetchData() {
-      if (prayerTimes !== "") return;
+      // if (prayerTimes !== "") return;
       console.log("on");
+      const d = new Date();
+      // console.log(selected.toLocaleDateString().replaceAll("/", "-") === d);
+      if (
+        !dateChanged
+        // d.toLocaleDateString().replaceAll("/", "-") ===
+        //   selected.toLocaleDateString().replaceAll("/", "-") &&
+        // prayerTimes !== ""
+      )
+        return;
       console.log(selected.toLocaleDateString().replaceAll("/", "-"));
       let parts = selected.toLocaleDateString().replaceAll("/", "-").split("-");
       parts.pop();
@@ -39,6 +54,7 @@ const usePrayerTimes = (selected, prayerTimes, setPrayerTimes) => {
       };
       // console.log(prayerT);
       localStorage.setItem("prayerTimes", JSON.stringify(prayerT));
+      setDateChanged(false);
       // const prt = localStorage.getItem("prayerTimes");
       // console.log(JSON.parse(prt), "++++++");
     }
