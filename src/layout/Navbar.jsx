@@ -42,17 +42,20 @@ const Navbar = () => {
               Prayer Times
             </li>
           </Link>
-          <li
-            onClick={() => {
-              setActive("qibla");
-              setDisplayNavbarItems(false);
-            }}
-            className={`cursor-pointer ${
-              active === "qibla" ? "text-secondary" : "text-background"
-            } hover:text-secondary`}
-          >
-            Qibla Direction
-          </li>
+          <Link to={"/qibla"}>
+            <li
+              onClick={() => {
+                setActive("qibla");
+                setDisplayNavbarItems(false);
+              }}
+              className={`cursor-pointer ${
+                active === "qibla" ? "text-secondary" : "text-background"
+              } hover:text-secondary`}
+            >
+              Qibla Direction
+            </li>
+          </Link>
+
           <li
             onClick={() => {
               setActive("calendar");
@@ -115,15 +118,17 @@ const Navbar = () => {
                   Prayer Times
                 </li>
               </Link>
+              <Link to={"/qibla"}>
+                <li
+                  onClick={() => setActive("qibla")}
+                  className={`cursor-pointer ${
+                    active === "qibla" ? "text-secondary" : "text-background"
+                  } hover:text-secondary`}
+                >
+                  Qibla Direction
+                </li>
+              </Link>
 
-              <li
-                onClick={() => setActive("qibla")}
-                className={`cursor-pointer ${
-                  active === "qibla" ? "text-secondary" : "text-background"
-                } hover:text-secondary`}
-              >
-                Qibla Direction
-              </li>
               <li
                 onClick={() => setActive("calendar")}
                 className={`cursor-pointer ${

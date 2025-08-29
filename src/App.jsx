@@ -6,6 +6,7 @@ import { useSetIpApi } from "./features/location/hooks/useSetIpApi";
 import { Routes, Route, Link } from "react-router-dom";
 import PrayerTimes from "./pages/PrayerTimes";
 import Navbar from "./layout/Navbar";
+import Qibla from "./pages/Qibla";
 
 function App() {
   // const [region, setRegion] = useState("Al-Riyadh, Saudi Arabia");
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/prayerTimes" element={<PrayerTimes />} />
+          <Route path="/qibla" element={<Qibla />} />
         </Routes>
       </LocationContext.Provider>
     </>
