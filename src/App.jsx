@@ -3,10 +3,11 @@ import Home from "./pages/Home";
 import { LocationContext } from "./contexts/Context";
 import { useEffect, useState } from "react";
 import { useSetIpApi } from "./features/location/hooks/useSetIpApi";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import PrayerTimes from "./pages/PrayerTimes";
 import Navbar from "./layout/Navbar";
 import Qibla from "./pages/Qibla";
+import Calendar from "./pages/Calendar";
 
 function App() {
   // const [region, setRegion] = useState("Al-Riyadh, Saudi Arabia");
@@ -41,6 +42,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/prayerTimes" element={<PrayerTimes />} />
           <Route path="/qibla" element={<Qibla />} />
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
       </LocationContext.Provider>
     </>

@@ -42,7 +42,7 @@ const Navbar = () => {
               Prayer Times
             </li>
           </Link>
-          <Link to={"/qibla"}>
+          <Link to="/qibla">
             <li
               onClick={() => {
                 setActive("qibla");
@@ -55,18 +55,19 @@ const Navbar = () => {
               Qibla Direction
             </li>
           </Link>
-
-          <li
-            onClick={() => {
-              setActive("calendar");
-              setDisplayNavbarItems(false);
-            }}
-            className={`cursor-pointer ${
-              active === "calendar" ? "text-secondary" : "text-background"
-            } hover:text-secondary`}
-          >
-            Calendar
-          </li>
+          <Link to="/calendar">
+            <li
+              onClick={() => {
+                setActive("calendar");
+                setDisplayNavbarItems(false);
+              }}
+              className={`cursor-pointer ${
+                active === "calendar" ? "text-secondary" : "text-background"
+              } hover:text-secondary`}
+            >
+              Calendar
+            </li>
+          </Link>
         </ul>
       </div>
     );
@@ -106,7 +107,7 @@ const Navbar = () => {
                   Home
                 </li>
               </Link>
-              <Link to="prayerTimes">
+              <Link to="/prayerTimes">
                 <li
                   onClick={() => setActive("prayerTime")}
                   className={`cursor-pointer ${
@@ -118,7 +119,7 @@ const Navbar = () => {
                   Prayer Times
                 </li>
               </Link>
-              <Link to={"/qibla"}>
+              <Link to="/qibla">
                 <li
                   onClick={() => setActive("qibla")}
                   className={`cursor-pointer ${
@@ -128,15 +129,16 @@ const Navbar = () => {
                   Qibla Direction
                 </li>
               </Link>
-
-              <li
-                onClick={() => setActive("calendar")}
-                className={`cursor-pointer ${
-                  active === "calendar" ? "text-secondary" : "text-background"
-                } hover:text-secondary`}
-              >
-                Calendar
-              </li>
+              <Link to="/calendar">
+                <li
+                  onClick={() => setActive("calendar")}
+                  className={`cursor-pointer ${
+                    active === "calendar" ? "text-secondary" : "text-background"
+                  } hover:text-secondary`}
+                >
+                  Calendar
+                </li>
+              </Link>
             </ul>
           </li>
           <li>
