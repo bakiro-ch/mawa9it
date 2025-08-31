@@ -14,7 +14,7 @@ const usePrayerTimes = (
   useEffect(() => {
     async function fetchData() {
       console.log("on");
-      if (!dateChanged) return;
+      if (!dateChanged && prayerTimes !== "") return;
       console.log(selected.toLocaleDateString().replaceAll("/", "-"));
       let parts = selected.toLocaleDateString().replaceAll("/", "-").split("-");
       parts.pop();
